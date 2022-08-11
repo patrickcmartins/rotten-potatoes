@@ -1,5 +1,3 @@
-
-
 name: CI
 
 on:
@@ -38,12 +36,16 @@ jobs:
       url: 'http://gordao.com.br'
     needs: deploy_dev
     steps:
+      - name: Piloteado
+        uses: actions/checkout@v2
+        
       - name: Run a one-line script
-        run: pwd | ls -la 
+        run: echo AAAAAAAAAAA TO COM DEPRESSÃO
+      
       - name: Send Nelson to DockerHub
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
-          image: patrickcmartins/rotten-potatoes
+          image: mpatrick/rotten-potatoes
           registry: docker.io
           dockerfile: ./src/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
