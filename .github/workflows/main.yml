@@ -39,7 +39,7 @@ jobs:
     needs: deploy_dev
     steps:
       - name: Run a one-line script
-        run: echo Hello, hmg!
+        run: pwd | ls -la 
       - name: Send Nelson to DockerHub
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
