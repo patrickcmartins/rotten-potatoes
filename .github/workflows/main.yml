@@ -1,0 +1,55 @@
+
+
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  #push:
+  #  branches: [ "main" ]
+  #pull_request:
+  #  branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+  deploy_dev:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: 
+      name: dev
+      url: 'gordao.com.br'
+    needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+  deploy_hmg:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: 
+      name: hmg
+      url: 'gordao.com.br'
+    needs: deploy_dev
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, hmg!
+        
+  deploy_prd:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: 
+      name: prd
+      url: 'gordao.com.br'
+    needs: deploy_hmg
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, prd!
+
+
