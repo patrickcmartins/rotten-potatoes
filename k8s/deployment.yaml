@@ -15,6 +15,10 @@ spec:
       container: 
         - name: mongodb
           image: mongo:4.4.6
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
           ports: 
             - containerPort: 27017
           env: 
@@ -41,6 +45,10 @@ spec:
       containers:
         - name: web
           image: mpatrick/rotten-potatoes
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
           ports:
             - containerPort: 5000
           env: 
