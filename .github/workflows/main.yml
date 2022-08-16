@@ -45,7 +45,7 @@ jobs:
       - name: Send Nelson to DockerHub
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
-          image: mpatrick/rotten-potatoes
+          image: mpatrick/rotten-potatoes:${{ github.sha }}
           registry: docker.io
           dockerfile: ./src/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
